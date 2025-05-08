@@ -4,9 +4,6 @@ import random
 # Kontekst: Narzędzie do tworzenia danych treningowych dla algorytmów analizy sekwencji DNA
 
 # MODYFIKACJA 1: Walidacja długości sekwencji
-# ORIGINAL:
-# seq_length = int(input("Podaj długość sekwencji: "))
-# MODIFIED (dodanie walidacji):
 while True:
     try:
         seq_length = int(input("Podaj długość sekwencji: "))
@@ -16,7 +13,16 @@ while True:
     except ValueError:
         print("Podaj poprawną dodatnią liczbę całkowitą.")
 
-seq_id = input("Podaj ID sekwencji: ").strip()
+# MODYFIKACJA 2: Walidacja ID sekwencji
+# ORIGINAL:
+# seq_id = input("Podaj ID sekwencji: ").strip()
+# MODIFIED (dodanie walidacji):
+while True:
+    seq_id = input("Podaj ID sekwencji (bez spacji): ").strip()
+    if seq_id and " " not in seq_id:
+        break
+    print("ID nie może być puste ani zawierać spacji.")
+
 description = input("Podaj opis sekwencji: ")
 name = input("Podaj imię: ")
 
