@@ -3,7 +3,19 @@ import random
 # Cel programu: Generowanie syntetycznych sekwencji DNA w formacie FASTA dla celów testowych w bioinformatyce
 # Kontekst: Narzędzie do tworzenia danych treningowych dla algorytmów analizy sekwencji DNA
 
-seq_length = int(input("Podaj długość sekwencji: "))
+# MODYFIKACJA 1: Walidacja długości sekwencji
+# ORIGINAL:
+# seq_length = int(input("Podaj długość sekwencji: "))
+# MODIFIED (dodanie walidacji):
+while True:
+    try:
+        seq_length = int(input("Podaj długość sekwencji: "))
+        if seq_length <= 0:
+            raise ValueError
+        break
+    except ValueError:
+        print("Podaj poprawną dodatnią liczbę całkowitą.")
+
 seq_id = input("Podaj ID sekwencji: ").strip()
 description = input("Podaj opis sekwencji: ")
 name = input("Podaj imię: ")
